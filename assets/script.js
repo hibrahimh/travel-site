@@ -10,4 +10,23 @@ document.addEventListener("DOMContentLoaded", function() {
             link.style.color = "white";
         });
     });
+
+    // Search functionality
+    const searchInput = document.getElementById("search");
+    const searchResults = document.createElement("div");
+    searchResults.id = "search-results";
+    searchInput.parentNode.appendChild(searchResults);
+
+    searchInput.addEventListener("input", function() {
+        const query = searchInput.value.toLowerCase();
+        searchResults.innerHTML = ""; // Clear previous results
+
+        if (query.includes("beach")) {
+            searchResults.innerHTML = "<p>Top Beach Recommendations: Maldives, Bora Bora, Maui</p>";
+        } else if (query.includes("temple")) {
+            searchResults.innerHTML = "<p>Famous Temples: Angkor Wat, Meenakshi Temple, Shwedagon Pagoda</p>";
+        } else if (query) {
+            searchResults.innerHTML = `<p>Searching recommendations for: ${query}</p>`;
+        }
+    });
 });
